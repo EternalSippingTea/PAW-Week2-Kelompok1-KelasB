@@ -1,0 +1,26 @@
+/* =========================================================
+   css/style.css — Shared base stylesheet
+   Dipakai bersama oleh index.html (Homepage) dan
+   landing-page.html (Landing Page jurnal). Isinya murni
+   reset dasar dan font, supaya tidak bentrok dengan warna
+   atau layout khusus masing-masing halaman.
+
+   Styling khusus tiap halaman ada di:
+   - css/home.css      (untuk index.html)
+   - css/landing.css    (untuk landing-page.html)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+}

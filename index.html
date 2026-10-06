@@ -3,153 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ringkasan Jurnal: Sistem Informasi Laundry Berbasis Web dengan Chatbot AI</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Trends Laundry Kiloan — Laundry Digital dengan Chatbot AI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/home.css">
 </head>
 <body>
 
-    <header>
-        <h1>Sistem Informasi Laundry Berbasis Web dengan Chatbot AI</h1>
-        <p>Ringkasan dan ulasan jurnal untuk tugas kuliah</p>
+    <!-- ============================================
+         ICON SPRITE
+         Semua ikon digambar sebagai garis sederhana
+         (bukan emoji) dan dipakai ulang lewat <use>.
+         ============================================ -->
+    <svg class="icon-sprite" aria-hidden="true">
+        <defs>
+            <symbol id="icon-drop" viewBox="0 0 24 24">
+                <path d="M12 2.5c3.2 4 6.5 8.2 6.5 12A6.5 6.5 0 0 1 5.5 14.5c0-3.8 3.3-8 6.5-12z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </symbol>
+            <symbol id="icon-chat" viewBox="0 0 24 24">
+                <path d="M4 5.5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4.5 3.8V16.5H4a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="8.3" cy="11" r="1" fill="currentColor" stroke="none"/>
+                <circle cx="12" cy="11" r="1" fill="currentColor" stroke="none"/>
+                <circle cx="15.7" cy="11" r="1" fill="currentColor" stroke="none"/>
+            </symbol>
+            <symbol id="icon-clock" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 7.5V12l3.2 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </symbol>
+            <symbol id="icon-chart" viewBox="0 0 24 24">
+                <path d="M4 20V10M10 20V4M16 20v-7M20 20H4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </symbol>
+            <symbol id="icon-users" viewBox="0 0 24 24">
+                <circle cx="9" cy="8.5" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M15.5 6.2A3 3 0 0 1 17 11.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M16.5 14.3c2.3.5 4 2.5 4 5.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </symbol>
+            <symbol id="icon-doc" viewBox="0 0 24 24">
+                <path d="M6 3.5h8l4 4V20a0.8 0.8 0 0 1-.8.8H6.8A0.8 0.8 0 0 1 6 20V3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M14 3.5V7.5h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M8.5 12h7M8.5 15h7M8.5 18h4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </symbol>
+            <symbol id="icon-db" viewBox="0 0 24 24">
+                <ellipse cx="12" cy="6" rx="7" ry="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M5 12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </symbol>
+            <symbol id="icon-cycle" viewBox="0 0 24 24">
+                <path d="M4.5 12a7.5 7.5 0 0 1 12.6-5.5M19.5 12a7.5 7.5 0 0 1-12.6 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M17 3.8v3.2h-3.2M7 20.2V17h3.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </symbol>
+            <symbol id="icon-arrow" viewBox="0 0 24 24">
+                <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+            </symbol>
+            <symbol id="icon-pin" viewBox="0 0 24 24">
+                <path d="M12 21s-6.5-5.9-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.1-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            </symbol>
+            <symbol id="icon-phone" viewBox="0 0 24 24">
+                <path d="M5 4.5h3.2l1.4 3.6-2 1.6a11 11 0 0 0 5.2 5.2l1.6-2 3.6 1.4V17.5c0 1-.9 1.8-1.9 1.6-7-1.2-11.9-6-13.1-13.1A1.7 1.7 0 0 1 5 4.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </symbol>
+            <symbol id="icon-mail" viewBox="0 0 24 24">
+                <rect x="3.5" y="5.5" width="17" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M4.5 6.5 12 12.5l7.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </symbol>
+            <symbol id="icon-check" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M8.3 12.3l2.5 2.5 4.9-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </symbol>
+            <symbol id="icon-user" viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M4.8 20c0-3.6 3.2-6.4 7.2-6.4s7.2 2.8 7.2 6.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </symbol>
+            <symbol id="icon-list" viewBox="0 0 24 24">
+                <path d="M8.5 7h10M8.5 12h10M8.5 17h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="5" cy="7" r="1.1" fill="currentColor" stroke="none"/>
+                <circle cx="5" cy="12" r="1.1" fill="currentColor" stroke="none"/>
+                <circle cx="5" cy="17" r="1.1" fill="currentColor" stroke="none"/>
+            </symbol>
+            <symbol id="icon-note" viewBox="0 0 24 24">
+                <path d="M4 5.5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4.5 3.8V16.5H4a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M7 9.5h10M7 12.8h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </symbol>
+            <symbol id="icon-shield" viewBox="0 0 24 24">
+                <path d="M12 3.3 19 6v5.3c0 4.8-3 7.9-7 9.4-4-1.5-7-4.6-7-9.4V6l7-2.7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M9 12l2.2 2.2L15.5 9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <header class="site-header">
+        <a class="logo" href="#beranda">
+            <span class="logo-badge"><svg class="icon" width="20" height="20"><use href="#icon-drop"/></svg></span>
+            Trends<span>Laundry</span>
+        </a>
 
         <nav>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#kekuatan">Kekuatan</a></li>
-                <li><a href="#kekurangan">Kekurangan</a></li>
-                <li><a href="#anggota">Anggota</a></li>
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#fitur">Fitur</a></li>
+                <li><a href="#proses">Proses</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#pesan">Pesan</a></li>
+                <li><a href="landing-page.html" class="nav-secondary">Ulasan Jurnal</a></li>
             </ul>
         </nav>
+
+        <a class="btn-nav" href="#pesan">
+            Pesan Sekarang
+            <svg class="icon" width="16" height="16"><use href="#icon-arrow"/></svg>
+        </a>
     </header>
 
     <main>
 
-        <section id="about">
-            <h2>About / Ringkasan Jurnal</h2>
+        <!-- ============== HERO ============== -->
+        <section id="beranda" class="hero">
+            <div class="hero-glow hero-glow-a"></div>
+            <div class="hero-glow hero-glow-b"></div>
 
-            <article>
-                <h3>Perancangan Sistem Informasi Laundry Berbasis Web Terintegrasi Chatbot Ai Dengan Metode Rad Pada Trend's Laundry</h3>
+            <div class="hero-inner">
+                <div class="hero-text">
+                    <p class="eyebrow">
+                        <svg class="icon" width="14" height="14"><use href="#icon-pin"/></svg>
+                        Laundry Kiloan Terpercaya &middot; Sawangan, Depok
+                    </p>
+                    <h1>Laundry Jadi Lebih Cepat dengan Sistem Digital &amp; Chatbot AI</h1>
+                    <p class="hero-desc">
+                        Trends Laundry Kiloan mencatat setiap transaksi secara digital dan
+                        punya chatbot AI yang siap menjawab harga, status cucian, dan jam
+                        buka kapan saja &mdash; tanpa perlu menunggu balasan staf.
+                    </p>
 
-                <ul>
-                    <li><strong>Penulis:</strong> Joko Purnomo dan Wulan Pahira (Program Studi Sistem Informasi, Universitas Pamulang)</li>
-                    <li><strong>Jurnal:</strong> Journal of Information Systems and Business Technology (JISBT), Vol. 02 No. 04, halaman 281-286</li>
-                    <li><strong>Tahun terbit:</strong> 2026</li>
-                    <li><strong>Fokus penelitian:</strong> Membuat sistem informasi laundry berbasis web yang dilengkapi chatbot AI dengan metode Rapid Application Development (RAD).</li>
+                    <div class="hero-actions">
+                        <a class="btn-primary" href="#pesan">
+                            Pesan Sekarang
+                            <svg class="icon" width="18" height="18"><use href="#icon-arrow"/></svg>
+                        </a>
+                        <a class="btn-ghost" href="#fitur">Lihat Fitur</a>
+                    </div>
+
+                    <ul class="trust-badges">
+                        <li><svg class="icon" width="16" height="16"><use href="#icon-check"/></svg> 85,56% skor kepuasan SUS</li>
+                        <li><svg class="icon" width="16" height="16"><use href="#icon-check"/></svg> Dibangun dengan metode RAD</li>
+                        <li><svg class="icon" width="16" height="16"><use href="#icon-check"/></svg> 4 peran pengguna</li>
+                    </ul>
+                </div>
+
+                <div class="hero-card" aria-label="Pratinjau fitur pelacakan status">
+                    <div class="hero-card-head">
+                        <span class="hero-card-icon"><svg class="icon" width="20" height="20"><use href="#icon-chat"/></svg></span>
+                        <div>
+                            <h2>Pratinjau Chatbot AI</h2>
+                            <p>Tanya status cucian lewat kode invoice</p>
+                        </div>
+                    </div>
+
+                    <ol class="hero-steps">
+                        <li class="done">
+                            <span class="step-dot"><svg class="icon" width="14" height="14"><use href="#icon-check"/></svg></span>
+                            <div>
+                                <strong>Diterima</strong>
+                                <span>Cucian tercatat di sistem</span>
+                            </div>
+                        </li>
+                        <li class="done">
+                            <span class="step-dot"><svg class="icon" width="14" height="14"><use href="#icon-check"/></svg></span>
+                            <div>
+                                <strong>Dicuci</strong>
+                                <span>Sedang diproses di outlet</span>
+                            </div>
+                        </li>
+                        <li class="active">
+                            <span class="step-dot"><svg class="icon" width="14" height="14"><use href="#icon-clock"/></svg></span>
+                            <div>
+                                <strong>Disetrika</strong>
+                                <span>Estimasi selesai 17.00</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="step-dot"><svg class="icon" width="14" height="14"><use href="#icon-clock"/></svg></span>
+                            <div>
+                                <strong>Siap Diambil</strong>
+                                <span>Menunggu proses sebelumnya</span>
+                            </div>
+                        </li>
+                    </ol>
+
+                    <p class="hero-card-note">Contoh tampilan fitur &mdash; cek status cucian asli lewat chatbot setelah transaksi dibuat.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== STATS STRIP ============== -->
+        <section class="stats" aria-label="Statistik singkat">
+            <div class="stat-item">
+                <svg class="icon" width="26" height="26"><use href="#icon-chart"/></svg>
+                <div>
+                    <strong>85,56%</strong>
+                    <span>Skor usability (SUS)</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <svg class="icon" width="26" height="26"><use href="#icon-cycle"/></svg>
+                <div>
+                    <strong>4 Tahap</strong>
+                    <span>Metode RAD</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <svg class="icon" width="26" height="26"><use href="#icon-db"/></svg>
+                <div>
+                    <strong>10 Entitas</strong>
+                    <span>Struktur basis data</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <svg class="icon" width="26" height="26"><use href="#icon-chat"/></svg>
+                <div>
+                    <strong>24 Jam</strong>
+                    <span>Chatbot AI aktif</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== FITUR ============== -->
+        <section id="fitur" class="features">
+            <h2 class="section-title">Fitur Sistem Kami</h2>
+            <p class="section-subtitle">Dibangun supaya layanan laundry lebih cepat, akurat, dan mudah dilacak secara real-time.</p>
+
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <span class="feature-icon"><svg class="icon" width="22" height="22"><use href="#icon-db"/></svg></span>
+                    <h3>Pencatatan Transaksi Digital</h3>
+                    <p>Setiap cucian masuk langsung tercatat di sistem, mengurangi risiko salah catat dan data hilang.</p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon"><svg class="icon" width="22" height="22"><use href="#icon-chat"/></svg></span>
+                    <h3>Chatbot AI 24 Jam</h3>
+                    <p>Tanyakan harga, jam operasional, atau status cucian ke chatbot kapan saja, tanpa harus login.</p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon"><svg class="icon" width="22" height="22"><use href="#icon-clock"/></svg></span>
+                    <h3>Cek Status Real-time</h3>
+                    <p>Masukkan kode invoice untuk melihat progres cucian Anda secara langsung.</p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon"><svg class="icon" width="22" height="22"><use href="#icon-doc"/></svg></span>
+                    <h3>Cetak Struk Otomatis</h3>
+                    <p>Struk transaksi tercetak otomatis setelah pembayaran, rapi dan konsisten.</p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon"><svg class="icon" width="22" height="22"><use href="#icon-chart"/></svg></span>
+                    <h3>Laporan Praktis</h3>
+                    <p>Laporan transaksi bisa difilter per periode, memudahkan rekap pendapatan bulanan.</p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon"><svg class="icon" width="22" height="22"><use href="#icon-users"/></svg></span>
+                    <h3>Multi-Peran Pengguna</h3>
+                    <p>Super Admin, Admin, Kasir, dan Owner punya akses sesuai tanggung jawab masing-masing.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============== PROSES RAD ============== -->
+        <section id="proses" class="process">
+            <h2 class="section-title">Dibangun dengan Metode RAD</h2>
+            <p class="section-subtitle">Empat tahap Rapid Application Development yang membuat pengembangan sistem lebih cepat dan sesuai kebutuhan lapangan.</p>
+
+            <ol class="process-grid">
+                <li class="process-card">
+                    <span class="process-num">01</span>
+                    <h3>Requirements Planning</h3>
+                    <p>Menggali kebutuhan lewat observasi dan wawancara dengan pemilik serta staf laundry.</p>
+                </li>
+                <li class="process-card">
+                    <span class="process-num">02</span>
+                    <h3>User Design</h3>
+                    <p>Merancang antarmuka, struktur basis data, dan alur kerja bersama pengguna.</p>
+                </li>
+                <li class="process-card">
+                    <span class="process-num">03</span>
+                    <h3>Construction</h3>
+                    <p>Membangun aplikasi: pemrograman, integrasi basis data, dan integrasi chatbot AI.</p>
+                </li>
+                <li class="process-card">
+                    <span class="process-num">04</span>
+                    <h3>Cutover</h3>
+                    <p>Menerapkan sistem ke operasional nyata, pelatihan pengguna, dan evaluasi.</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- ============== TENTANG ============== -->
+        <section id="tentang" class="about">
+            <div class="about-text">
+                <h2 class="section-title">Tentang Trends Laundry Kiloan</h2>
+                <p>
+                    Trends Laundry Kiloan adalah usaha jasa cuci pakaian di Sawangan, Depok,
+                    Jawa Barat. Untuk membuat layanan lebih cepat dan tertata, kami membangun
+                    sistem informasi berbasis web yang dilengkapi chatbot AI, dikembangkan
+                    dengan metode Rapid Application Development (RAD).
+                </p>
+                <p>
+                    Seluruh fungsi inti sistem telah lolos Black Box Testing, dan pengujian
+                    usability terhadap lima peran pengguna mencatat skor rata-rata 85,56%,
+                    tergolong berhasil.
+                </p>
+            </div>
+
+            <div class="about-card">
+                <h3><svg class="icon" width="18" height="18"><use href="#icon-shield"/></svg> Teknologi yang Dipakai</h3>
+                <ul class="tech-list">
+                    <li>PHP &amp; CodeIgniter 3</li>
+                    <li>MySQL</li>
+                    <li>HTML, CSS, JavaScript</li>
+                    <li>n8n &amp; Docker (Chatbot AI)</li>
                 </ul>
-
-                <h4>Ringkasan</h4>
-                <p>
-                    Trends Laundry Kiloan masih mencatat transaksi dan data pelanggan secara manual,
-                    sehingga rawan salah catat, data hilang, dan informasi ke pelanggan sering terlambat.
-                    Penelitian ini membuat sistem berbasis web untuk mengatasi masalah tersebut.
-                </p>
-                <p>
-                    Sistem dibuat dengan metode RAD yang terdiri dari empat tahap: requirements planning,
-                    user design, construction, dan cutover. Teknologi yang dipakai antara lain PHP,
-                    HTML, CSS, JavaScript, MySQL, CodeIgniter 3, dan Bootstrap 4. Chatbot berjalan
-                    lewat n8n dan Docker yang terhubung ke model bahasa.
-                </p>
-                <p>
-                    Sistem dapat mencatat transaksi, mengelola data member, layanan, dan laporan,
-                    mencetak struk, serta menjawab pertanyaan pelanggan lewat chatbot (harga,
-                    status cucian, dan jam buka). Pengguna sistem terdiri dari Super Admin, Admin,
-                    Kasir, Owner, dan Pelanggan. Pengujian memakai Black Box Testing dan System
-                    Usability Scale (SUS) dengan skor rata-rata 85,56%.
-                </p>
-            </article>
-
-            <aside>
-                <h3>Catatan Tambahan</h3>
-                <p>
-                    Menurut jurnal, kebaruan penelitian ini ada pada penggabungan chatbot AI langsung
-                    ke dalam sistem informasi laundry, bukan sebagai layanan terpisah di aplikasi
-                    pesan instan.
-                </p>
-            </aside>
+            </div>
         </section>
 
-        <section id="kekuatan">
-            <h2>Kekuatan</h2>
-            <ul>
-                <li>Metode penelitian jelas: memakai empat tahap RAD, dan kebutuhan sistem dikumpulkan lewat observasi, wawancara, dan dokumentasi.</li>
-                <li>Perancangan sistem lengkap: basis data dirancang dengan ERD dan LRS, sedangkan perilaku sistem digambarkan dengan diagram UML (use case, activity, sequence, class).</li>
-                <li>Fitur sistem cukup lengkap: transaksi, data member, laporan yang bisa difilter per periode, cetak struk, dan pembagian peran pengguna.</li>
-                <li>Chatbot AI terintegrasi dengan sistem sehingga pelanggan bisa cek status cucian lewat kode invoice tanpa login.</li>
-                <li>Pengujian dilakukan dengan dua cara: Black Box Testing (semua unit yang diuji berhasil, termasuk uji data valid dan tidak valid) dan SUS.</li>
-                <li>Hasil usability baik: skor rata-rata 85,56% dan seluruh kategori tergolong berhasil.</li>
-                <li>Jurnal juga membandingkan penelitian ini dengan 10 penelitian terdahulu, sehingga posisi dan kebaruannya jelas.</li>
-            </ul>
-        </section>
+        <!-- ============== FORM PEMESANAN ============== -->
+        <section id="pesan" class="order">
+            <h2 class="section-title">Form Pemesanan</h2>
+            <p class="section-subtitle">Isi data di bawah ini, tim kami akan menghubungi Anda untuk konfirmasi jadwal penjemputan.</p>
 
-        <section id="kekurangan">
-            <h2>Kekurangan</h2>
-            <ul>
-                <li>Uji usability hanya melibatkan lima responden, sehingga hasilnya belum tentu mewakili banyak pengguna.</li>
-                <li>Penelitian hanya dilakukan pada satu usaha (Trends Laundry Kiloan), jadi hasilnya belum tentu sama di tempat lain.</li>
-                <li>Jurnal tidak menyajikan data perbandingan sebelum dan sesudah sistem dipakai (misalnya waktu layanan atau jumlah kesalahan), sehingga klaim "lebih cepat dan efisien" belum ditunjukkan dengan angka.</li>
-                <li>Pengujian chatbot hanya tercatat "Berhasil" pada tabel black box. Ketepatan jawaban chatbot tidak diukur secara rinci.</li>
-                <li>Jurnal menyebut tiga belas unit diuji, tetapi tabel hasil hanya menampilkan delapan baris ringkasan, sehingga rincian pengujian kurang terlihat.</li>
-                <li>Skor kepuasan (satisfaction) paling rendah, yaitu 78,6%, yang menurut jurnal menunjukkan tampilan masih bisa diperbaiki.</li>
-                <li>Sistem belum mendukung pembayaran digital dan layanan bagi pelanggan non-member. Kemampuan bahasa chatbot juga masih perlu ditingkatkan (sesuai saran jurnal).</li>
-            </ul>
-        </section>
+            <form class="order-form" action="#" method="post">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <div class="input-wrap">
+                        <svg class="icon" width="18" height="18"><use href="#icon-user"/></svg>
+                        <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+                    </div>
+                </div>
 
-        <section id="anggota">
-            <h2>Anggota Kelompok</h2>
-            <table>
-                <caption>Daftar anggota kelompok</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">NIM</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Rayhan Fatih Ramadhani</td>
-                        <td>20240140097</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Muhammad Daffa Azakki</td>
-                        <td>20240140071</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Muhammad Harits Adha</td>
-                        <td>20240140073</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Rangga Alfarizzy</td>
-                        <td>20240140059</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Jundi Al-Faruq Reksowardoyo</td>
-                        <td>20240140100</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Farhan Rasyid Mustaqim</td>
-                        <td>20240140102</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Fathur Rahman</td>
-                        <td>20240140090</td>
-                    </tr>
-                </tbody>
-            </table>
+                <div class="form-group">
+                    <label for="telepon">Nomor HP</label>
+                    <div class="input-wrap">
+                        <svg class="icon" width="18" height="18"><use href="#icon-phone"/></svg>
+                        <input type="tel" id="telepon" name="telepon" placeholder="08xxxxxxxxxx" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="alamat">Alamat Penjemputan</label>
+                    <div class="input-wrap">
+                        <svg class="icon" width="18" height="18"><use href="#icon-pin"/></svg>
+                        <input type="text" id="alamat" name="alamat" placeholder="Jalan, nomor rumah, kelurahan">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="layanan">Jenis Layanan</label>
+                    <div class="input-wrap">
+                        <svg class="icon" width="18" height="18"><use href="#icon-list"/></svg>
+                        <select id="layanan" name="layanan">
+                            <option value="cuci-kering">Cuci Kering</option>
+                            <option value="cuci-setrika">Cuci + Setrika</option>
+                            <option value="express">Cuci Express (1 Hari)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group form-group-full">
+                    <label for="catatan">Catatan Tambahan</label>
+                    <div class="input-wrap input-wrap-top">
+                        <svg class="icon" width="18" height="18"><use href="#icon-note"/></svg>
+                        <textarea id="catatan" name="catatan" rows="4" placeholder="Contoh: jemput sore hari, pisahkan pakaian putih"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    Kirim Pesanan
+                    <svg class="icon" width="18" height="18"><use href="#icon-arrow"/></svg>
+                </button>
+            </form>
         </section>
 
     </main>
 
     <footer>
-        <p>Mata kuliah: Pengembangan Aplikasi Web</p>
-        <p>Universitas Muhammadiyah Yogyakarta</p>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="logo-badge"><svg class="icon" width="18" height="18"><use href="#icon-drop"/></svg></span>
+                <strong>Trends Laundry Kiloan</strong>
+            </div>
+
+            <ul class="footer-contact">
+                <li><svg class="icon" width="16" height="16"><use href="#icon-pin"/></svg> Sawangan, Depok, Jawa Barat</li>
+                <li><svg class="icon" width="16" height="16"><use href="#icon-phone"/></svg> 0812-xxxx-xxxx</li>
+                <li><svg class="icon" width="16" height="16"><use href="#icon-mail"/></svg> halo@trendslaundry.example</li>
+            </ul>
+
+            <a class="footer-link" href="landing-page.html">Baca ulasan jurnal penelitian ini &rarr;</a>
+        </div>
+
+        <p class="footer-copy">&copy; 2026 Trends Laundry Kiloan</p>
     </footer>
 
 </body>
